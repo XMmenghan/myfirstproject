@@ -1,24 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Todoform from './components/todoform';
-import Todolist from './components/todolist';
+"use client";
 
-export default function App() {
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import Todoform from "./components/todoform";
+import Todolist from "./components/todolist";
+import { useState } from "react";
+
+function App() {
+  const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+  });
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <Todoform />
-      <Todolist />
+      <div>
+        <h1>My Task Lists</h1>
+        <StatusBar style="auto" />
+        <Todolist tasks={tasks} />
+        <Todoform />
+      </div>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
