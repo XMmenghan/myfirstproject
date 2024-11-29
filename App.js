@@ -1,31 +1,18 @@
-"use client";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./screens/home";
+import AboutScreen from "./screens/about";
 
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Todoform from "./components/todoform";
-import Todolist from "./components/todolist";
-import { useState } from "react";
+const Stack = createStackNavigator();
 
-function App() {
-  const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  });
+export default function App() {
   return (
-    <View style={styles.container}>
-      <div>
-        <h1>My Task Lists</h1>
-        <StatusBar style="auto" />
-        <Todolist tasks={tasks} />
-        <Todoform />
-      </div>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-export default App;
