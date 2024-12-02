@@ -8,6 +8,9 @@ import { useState } from "react";
 
 function App() {
   const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
+  const addTask = (taskText) => {
+    setTasks([...tasks, taskText]);
+  };
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -22,8 +25,9 @@ function App() {
         <h1>My Task Lists</h1>
         <StatusBar style="auto" />
         <Todolist tasks={tasks} />
-        <Todoform />
+        <Todoform addTask={addTask} />
       </div>
     </View>
   );
 }
+export default App;
