@@ -1,0 +1,38 @@
+Security Recommendations
+What is your security recommendation? Why did you choose it?
+My security recommendation is to mitigate sensitive information disclosure risks. Specifically, this involves ensuring that sensitive data, such as user information and order details, is not exposed through the app's user interface, debug logs, or local data storage.
+The reason for choosing this recommendation is that our project, a mobile-based hotpot restaurant QR code ordering system, handles potentially sensitive data, including order details and table-specific QR code mappings. If sensitive data is exposed, it could lead to privacy breaches or unauthorized access, which would negatively affect both the business and customer trust.
+Who does the recommendation benefit?
+This recommendation benefits both the end-users and the developers:
+•	End-users: Protects personal and order-related information from unauthorized access.
+•	Developers: Reduces the risk of data breaches, ensuring compliance with security best practices and building a more secure app.
+If the recommendation was found somewhere other than the provided checklist, include a link to it.
+This recommendation is based on the OWASP Mobile Application Security Testing Guide (MSTG). Specifically, the guidance for checking sensitive data disclosure can be found at the following link:
+Checking for Sensitive Data Disclosure.
+When would the recommendation have to be implemented?
+This recommendation should be implemented immediately during the development phase. Sensitive information disclosure is a critical risk and could lead to severe consequences if exploited. It is easier and more cost-effective to address these issues proactively rather than fixing them after a security incident occurs.
+Why do you think your project needs your recommendation?
+Our project stores and processes potentially sensitive data, such as:
+•	Table-specific QR code mappings: If leaked, they could allow unauthorized users to access and place orders for any table.
+•	Order details: Exposing order information may lead to privacy concerns for customers.
+
+
+Implementing this recommendation ensures that our app provides a secure and trustworthy environment for both customers and restaurant staff.
+How do you think your recommendation could be applied?
+The recommendation can be applied in the following ways:
+1.	Avoid storing sensitive data in plaintext:
+o	Use encryption for locally stored data such as JSON files.
+o	Securely handle temporary data used in the application.
+2.	Sanitize logs and error messages:
+o	Remove sensitive data from debug logs and error outputs.
+o	Configure React Native to exclude sensitive information from crash logs.
+3.	Secure communication:
+o	If switching to a server-based data solution in the future, use HTTPS to encrypt all data in transit.
+4.	Conduct manual and automated tests:
+o	Follow the OWASP MSTG guidelines to test for sensitive data leaks in the user interface and storage.
+How feasible would the implementation be?
+The implementation is highly feasible given the current stage of our project:
+•	React Native tools: React Native offers libraries such as react-native-sensitive-info and AsyncStorage for securely managing sensitive data.
+•	Effort: Encrypting locally stored JSON data and sanitizing debug logs require a moderate amount of effort but are manageable within our team’s current skill set.
+•	Costs: These measures do not incur additional costs as the tools and libraries needed are free and open-source.
+
